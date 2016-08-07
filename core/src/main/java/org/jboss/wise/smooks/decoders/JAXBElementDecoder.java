@@ -21,26 +21,27 @@
  */
 package org.jboss.wise.smooks.decoders;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.namespace.QName;
 import org.milyn.cdr.SmooksConfigurationException;
 import org.milyn.cdr.SmooksResourceConfiguration;
 import org.milyn.javabean.DataDecodeException;
 import org.milyn.javabean.DataDecoder;
 import org.milyn.javabean.DecodeType;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.namespace.QName;
+
 /**
  * {@link javax.xml.datatype.Duration} data decoder.
- *
+ * <p>
  * Decodes the supplied string into a {@link javax.xml.bind.JAXBElement} It requires 2 parameter to build QName for JAXBElement.
  * IOW what it does under the wood is: new JAXBElement&lt;String&gt;(new QName(nameSpaceURI, localPart), String.class, String data);
  */
-@DecodeType( JAXBElement.class )
+@DecodeType(JAXBElement.class)
 public class JAXBElementDecoder implements DataDecoder {
     String nameSpaceURI = null;
     String localPart = null;
 
-    public void setConfiguration( SmooksResourceConfiguration resourceConfig ) throws SmooksConfigurationException {
+    public void setConfiguration(SmooksResourceConfiguration resourceConfig) throws SmooksConfigurationException {
         nameSpaceURI = resourceConfig.getStringParameter("namespaceURI");
         localPart = resourceConfig.getStringParameter("localPart");
         if (nameSpaceURI == null || localPart == null) {
@@ -48,7 +49,7 @@ public class JAXBElementDecoder implements DataDecoder {
         }
     }
 
-    public Object decode( String data ) throws DataDecodeException {
+    public Object decode(String data) throws DataDecodeException {
         return new JAXBElement<String>(new QName(nameSpaceURI, localPart), String.class, data);
     }
 }

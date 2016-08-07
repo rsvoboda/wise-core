@@ -21,18 +21,18 @@
  */
 package org.jboss.wise.core.client.impl.reflection;
 
-import java.lang.reflect.Method;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import javax.xml.ws.WebEndpoint;
 import net.jcip.annotations.Immutable;
 import net.jcip.annotations.ThreadSafe;
 import org.jboss.wise.core.client.WSEndpoint;
 import org.jboss.wise.core.client.WSService;
 import org.jboss.wise.core.exception.WiseRuntimeException;
+
+import javax.xml.ws.WebEndpoint;
+import java.lang.reflect.Method;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author stefano.maestri@javalinux.it
@@ -51,21 +51,21 @@ public class WSServiceImpl implements WSService {
     protected final int maxThreadPoolSize;
 
     /**
-     * @param serviceClass   class
-     * @param classLoader   classloader
-     * @param service       object
-     * @param userName     string
-     * @param password     string
-     * @param excludedPorts set of string
+     * @param serviceClass      class
+     * @param classLoader       classloader
+     * @param service           object
+     * @param userName          string
+     * @param password          string
+     * @param excludedPorts     set of string
      * @param maxThreadPoolSize the max pool size for method execution of service attached endpoint.
      */
-    public WSServiceImpl( Class<?> serviceClass,
-                          ClassLoader classLoader,
-                          Object service,
-                          String userName,
-                          String password,
-                          Set<String> excludedPorts,
-                          int maxThreadPoolSize ) {
+    public WSServiceImpl(Class<?> serviceClass,
+                         ClassLoader classLoader,
+                         Object service,
+                         String userName,
+                         String password,
+                         Set<String> excludedPorts,
+                         int maxThreadPoolSize) {
         super();
         this.serviceClass = serviceClass;
         this.classLoader = classLoader;
@@ -84,7 +84,7 @@ public class WSServiceImpl implements WSService {
 
     /**
      * Create the endpoints' map and gives it back.
-     * 
+     *
      * @return The Map of WSEndpoint with symbolic names as keys
      */
     public Map<String, WSEndpoint> processEndpoints() {
@@ -112,8 +112,8 @@ public class WSServiceImpl implements WSService {
         return endpoints;
     }
 
-    private WSEndpoint getWiseEndpoint( Method method,
-                                        String name ) throws WiseRuntimeException {
+    private WSEndpoint getWiseEndpoint(Method method,
+                                       String name) throws WiseRuntimeException {
         ClassLoader oldLoader = SecurityActions.getContextClassLoader();
         WSEndpointImpl ep = createEndpoint();
         try {
@@ -137,9 +137,9 @@ public class WSServiceImpl implements WSService {
         }
         return ep;
     }
-    
+
     protected WSEndpointImpl createEndpoint() {
-	return new WSEndpointImpl(this.maxThreadPoolSize);
+        return new WSEndpointImpl(this.maxThreadPoolSize);
     }
 
     private synchronized final Class<?> getServiceClass() {
@@ -161,12 +161,12 @@ public class WSServiceImpl implements WSService {
 
         /**
          * @param serviceClass  class
-         * @param serviceObject  object
+         * @param serviceObject object
          * @param buildMethod   method
          */
-        public WSEndPointbuilder( Class<?> serviceClass,
-                                  Object serviceObject,
-                                  Method buildMethod ) {
+        public WSEndPointbuilder(Class<?> serviceClass,
+                                 Object serviceObject,
+                                 Method buildMethod) {
             super();
             this.serviceClass = serviceClass;
             this.serviceObject = serviceObject;
@@ -176,7 +176,7 @@ public class WSServiceImpl implements WSService {
         public Object createEndPointUnderlyingObject() {
             try {
                 return serviceClass.getMethod(buildMethod.getName(), buildMethod.getParameterTypes()).invoke(serviceObject,
-                                                                                                             (Object[])null);
+                        (Object[]) null);
             } catch (Exception e) {
                 // TODO: something better
                 e.printStackTrace();

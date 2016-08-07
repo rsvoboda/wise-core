@@ -21,25 +21,26 @@
  */
 package org.jboss.wise.smooks.decoders;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.Duration;
 import org.milyn.javabean.DataDecodeException;
 import org.milyn.javabean.DataDecoder;
 import org.milyn.javabean.DecodeType;
 import org.milyn.javabean.decoders.DateDecoder;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.Duration;
+
 /**
  * {@link javax.xml.datatype.Duration} data decoder.
- *
+ * <p>
  * Decodes the supplied string into a {@link javax.xml.datatype.Duration} String value is supposed to be milliseconds representing
  * this Duration
  */
-@DecodeType( Duration.class )
+@DecodeType(Duration.class)
 public class DurationDecoder extends DateDecoder implements DataDecoder {
 
     @Override
-    public Object decode( String data ) throws DataDecodeException {
+    public Object decode(String data) throws DataDecodeException {
         Object result = null;
         try {
             result = DatatypeFactory.newInstance().newDuration(Long.parseLong(data));

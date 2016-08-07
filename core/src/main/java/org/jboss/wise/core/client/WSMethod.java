@@ -21,18 +21,19 @@
  */
 package org.jboss.wise.core.client;
 
-import java.io.OutputStream;
-import java.util.Map;
 import net.jcip.annotations.ThreadSafe;
 import org.jboss.wise.core.exception.InvocationException;
 import org.jboss.wise.core.exception.MappingException;
 import org.jboss.wise.core.exception.WiseWebServiceException;
 import org.jboss.wise.core.mapper.WiseMapper;
 
+import java.io.OutputStream;
+import java.util.Map;
+
 /**
  * It Represents a webservice operation(action) invocation and it always refer
  * to a specific endpoint.
- * 
+ *
  * @author stefano.maestri@javalinux.it
  * @since 23-Aug-2007
  */
@@ -46,68 +47,65 @@ public interface WSMethod {
 
     /**
      * Invokes this method with the provided arguments applying provided mapper
-     * 
-     * @param args
-     *            the arguments to call operation. It could be a generic Object
-     *            to be passed to provided mapper. If mapper is null it works
-     *            exactly like {@link #invoke(Object)}
-     * @param mapper
-     *            if null no mappings are applied method will be invoked using
-     *            args directly. in this case the keys of the map gotta be the
-     *            parameters names as defined in wsdl/wsconsume generated
-     *            classes
+     *
+     * @param args   the arguments to call operation. It could be a generic Object
+     *               to be passed to provided mapper. If mapper is null it works
+     *               exactly like {@link #invoke(Object)}
+     * @param mapper if null no mappings are applied method will be invoked using
+     *               args directly. in this case the keys of the map gotta be the
+     *               parameters names as defined in wsdl/wsconsume generated
+     *               classes
      * @return return an {@link InvocationResult} object populated with returned
-     *         values (implementation will process both directed returned values
-     *         and OUT parameters as defined in wsdl)
+     * values (implementation will process both directed returned values
+     * and OUT parameters as defined in wsdl)
      * @throws WiseWebServiceException  issue calling the service
      * @throws InvocationException      issue invoking service
-     * @throws IllegalArgumentException   illegal argument
-     * @throws MappingException     mapping issue
+     * @throws IllegalArgumentException illegal argument
+     * @throws MappingException         mapping issue
      */
     public InvocationResult invoke(Object args, WiseMapper mapper) throws WiseWebServiceException, InvocationException, IllegalArgumentException, MappingException;
 
     /**
      * Invokes this method with the provided arguments
-     * 
-     * @param args
-     *            the arguments to call operation. args must be a Map&lt;String,
-     *            Object&gt;. This Map have to contain entries for all needed
-     *            parameters, keys have to reflect operation parameter name as
-     *            defined in wsdl. Keys which names are not defined in wsdls
-     *            will be simply ignored. Implementation will take care values
-     *            nullability will reflect "nillable" properties defined in
-     *            wsdl. order isn't important since WSMethod implementation will
-     *            take care of reorder parameters in right position to make
-     *            operation call. If it isn't a Map&lt;String, Object&gt; or keys
-     *            don't contain all parameters name an
-     *            {@link IllegalArgumentException} is thrown.
+     *
+     * @param args the arguments to call operation. args must be a Map&lt;String,
+     *             Object&gt;. This Map have to contain entries for all needed
+     *             parameters, keys have to reflect operation parameter name as
+     *             defined in wsdl. Keys which names are not defined in wsdls
+     *             will be simply ignored. Implementation will take care values
+     *             nullability will reflect "nillable" properties defined in
+     *             wsdl. order isn't important since WSMethod implementation will
+     *             take care of reorder parameters in right position to make
+     *             operation call. If it isn't a Map&lt;String, Object&gt; or keys
+     *             don't contain all parameters name an
+     *             {@link IllegalArgumentException} is thrown.
      * @return return an {@link InvocationResult} object populated with returned
-     *         values (implementation will process both directed returned values
-     *         and OUT parameters as defined in wsdl)
+     * values (implementation will process both directed returned values
+     * and OUT parameters as defined in wsdl)
      * @throws WiseWebServiceException  can indicate login credentials needed
      * @throws InvocationException      issue invoking service
-     * @throws IllegalArgumentException  illegal argument
-     * @throws MappingException     mapping issue
+     * @throws IllegalArgumentException illegal argument
+     * @throws MappingException         mapping issue
      */
     public InvocationResult invoke(Object args) throws WiseWebServiceException, InvocationException, IllegalArgumentException, MappingException;
-    
+
     /**
      * Generates and writes a preview of the request message for invoking this
      * method with the provided arguments.
-     * 
-     * @param args   map
-     * @param os    output stream
-     * @throws InvocationException  issue invoking service
+     *
+     * @param args map
+     * @param os   output stream
+     * @throws InvocationException issue invoking service
      */
     public void writeRequestPreview(Map<String, Object> args, OutputStream os) throws InvocationException;
 
     /**
      * Gets the map of {@link WebParameter} for the webserice method represented
      * by instance of this type
-     * 
+     *
      * @return a Map&lt;String, Object&gt; representing valid webparameters where keys
-     *         contain symbolic names as defined by wsdl. It may be null in case
-     *         of selected operation haven't parameter.
+     * contain symbolic names as defined by wsdl. It may be null in case
+     * of selected operation haven't parameter.
      */
     public Map<String, ? extends WebParameter> getWebParams();
 

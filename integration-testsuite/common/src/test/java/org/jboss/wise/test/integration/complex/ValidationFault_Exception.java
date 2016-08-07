@@ -1,4 +1,3 @@
-
 package org.jboss.wise.test.integration.complex;
 
 import javax.xml.ws.WebFault;
@@ -12,17 +11,17 @@ import javax.xml.ws.WebFault;
 
 @WebFault(name = "ValidationFault", targetNamespace = "http://types.complex.jaxws.ws.test.jboss.org/")
 public class ValidationFault_Exception extends Exception {
-    
+
     private org.jboss.wise.test.integration.complex.ValidationFault validationFault;
 
     public ValidationFault_Exception() {
         super();
     }
-    
+
     public ValidationFault_Exception(String message) {
         super(message);
     }
-    
+
     public ValidationFault_Exception(String message, Throwable cause) {
         super(message, cause);
     }

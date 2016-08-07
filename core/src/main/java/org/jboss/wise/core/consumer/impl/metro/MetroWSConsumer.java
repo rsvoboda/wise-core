@@ -21,6 +21,10 @@
  */
 package org.jboss.wise.core.consumer.impl.metro;
 
+import org.apache.log4j.Logger;
+import org.jboss.wise.core.consumer.WSConsumer;
+import org.jboss.wise.core.exception.WiseRuntimeException;
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.PrintStream;
@@ -30,47 +34,44 @@ import java.net.URL;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.List;
-import org.apache.log4j.Logger;
-import org.jboss.wise.core.consumer.WSConsumer;
-import org.jboss.wise.core.exception.WiseRuntimeException;
 
 public class MetroWSConsumer extends WSConsumer {
     private String metroHome;
     private final Logger log = Logger.getLogger(MetroWSConsumer.class);
 
     @Override
-    public List<String> importObjectFromWsdl( String wsdlURL,
-                                              File outputDir,
-                                              File sourceDir,
-                                              String targetPackage,
-                                              List<File> bindingFiles,
-                                              PrintStream messageStream,
-                                              File catelog) throws MalformedURLException, WiseRuntimeException {
+    public List<String> importObjectFromWsdl(String wsdlURL,
+                                             File outputDir,
+                                             File sourceDir,
+                                             String targetPackage,
+                                             List<File> bindingFiles,
+                                             PrintStream messageStream,
+                                             File catelog) throws MalformedURLException, WiseRuntimeException {
         ClassLoader oldClassLoader = getContextClassLoader();
         LocalFirstClassLoader metroClassLoader = new LocalFirstClassLoader(getMertroJars(), oldClassLoader);
         try {
 
             Class<?> wsImportClaz = metroClassLoader.loadClass("com.sun.tools.ws.WsImport");
-            Method mainMethod = wsImportClaz.getDeclaredMethod("doMain", new Class[] {String[].class});
+            Method mainMethod = wsImportClaz.getDeclaredMethod("doMain", new Class[]{String[].class});
             List<String> args = new java.util.ArrayList<String>();
             args.add("-keep");
             if (targetPackage != null && targetPackage.trim().length() > 0) {
                 args.add("-p");
                 args.add(targetPackage);
             }
-            
+
             if (bindingFiles != null) {
                 for (File bindingFile : bindingFiles) {
                     args.add("-b");
                     args.add(bindingFile.getAbsolutePath());
                 }
             }
-            
+
             if (catelog != null) {
                 args.add("-catelog");
                 args.add(catelog.getAbsolutePath());
             }
-            
+
             args.add("-d");
             args.add(outputDir.getAbsolutePath());
             args.add("-s");
@@ -79,7 +80,7 @@ public class MetroWSConsumer extends WSConsumer {
                 args.add("-verbose");
             }
             args.add(wsdlURL);
-            mainMethod.invoke(null, new Object[] {args.toArray(new String[] {})});
+            mainMethod.invoke(null, new Object[]{args.toArray(new String[]{})});
         } catch (Exception e) {
             log.error("Failed to load metro wsimport to generate jaxws classes for wsdl " + wsdlURL, e);
             throw new WiseRuntimeException("Failed to load metro wsimport to generate jaxws classes for wsdl" + wsdlURL, e);
@@ -88,7 +89,7 @@ public class MetroWSConsumer extends WSConsumer {
 
     }
 
-    public void setMetroHome( String value ) {
+    public void setMetroHome(String value) {
         this.metroHome = value;
     }
 
@@ -103,8 +104,8 @@ public class MetroWSConsumer extends WSConsumer {
             String metroLibPath = getMetroHome().endsWith(File.separator) ? getMetroHome() + "lib" : getMetroHome() + "/lib";
             File metroLib = new File(metroLibPath);
             String[] jars = metroLib.list(new FilenameFilter() {
-                public boolean accept( File dir,
-                                       String name ) {
+                public boolean accept(File dir,
+                                      String name) {
                     if (name.endsWith(".jar")) {
                         return true;
                     }
@@ -127,26 +128,21 @@ public class MetroWSConsumer extends WSConsumer {
         } else {
             throw new WiseRuntimeException("Metro home is not set.");
         }
-        return urls.toArray(new URL[] {});
+        return urls.toArray(new URL[]{});
 
     }
 
-    private static ClassLoader getContextClassLoader()
-    {
-       SecurityManager sm = System.getSecurityManager();
-       if (sm == null)
-       {
-          return Thread.currentThread().getContextClassLoader();
-       }
-       else
-       {
-          return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
-             public ClassLoader run()
-             {
-                return Thread.currentThread().getContextClassLoader();
-             }
-          });
-       }
+    private static ClassLoader getContextClassLoader() {
+        SecurityManager sm = System.getSecurityManager();
+        if (sm == null) {
+            return Thread.currentThread().getContextClassLoader();
+        } else {
+            return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
+                public ClassLoader run() {
+                    return Thread.currentThread().getContextClassLoader();
+                }
+            });
+        }
     }
 }
 

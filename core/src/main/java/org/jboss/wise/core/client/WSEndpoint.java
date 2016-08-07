@@ -21,17 +21,18 @@
  */
 package org.jboss.wise.core.client;
 
-import java.util.List;
-import java.util.Map;
-import javax.xml.ws.handler.Handler;
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 import org.jboss.wise.core.wsextensions.WSExtensionEnabler;
 
+import javax.xml.ws.handler.Handler;
+import java.util.List;
+import java.util.Map;
+
 /**
  * This represent a Endpoint(Port) and has utility methods to edit username,
  * password, endpoint address, attach handlers
- * 
+ *
  * @author Stefano Maestri, stefano.maestri@javalinux.it
  * @author <a href="ema@redhat.com">Jim Ma</a>
  */
@@ -41,23 +42,23 @@ public interface WSEndpoint {
     /**
      * create the underlying instance of the endpoint generated class. Useful to
      * create a thread pool invoking endpoint methods.
-     * 
+     *
      * @return the created underlying instance of the endpoint generated class
      */
     public Object createInstance();
 
     /**
      * Set username for endpoint authentication
-     * 
-     * @param username  string
+     *
+     * @param username string
      */
     @GuardedBy("this")
     public void setUsername(String username);
 
     /**
      * Set password for endpoint authentication
-     * 
-     * @param password  string
+     *
+     * @param password string
      */
     @GuardedBy("this")
     public void setPassword(String password);
@@ -66,7 +67,6 @@ public interface WSEndpoint {
     public Class<?> getUnderlyingObjectClass();
 
     /**
-     * 
      * @return endpoint name as defined in wsdl
      */
     @GuardedBy("this")
@@ -75,9 +75,9 @@ public interface WSEndpoint {
     /**
      * Add an Handler to this endpoint. Handler will apply on all endpoint
      * method called
-     * 
+     *
+     * @param handler handler
      * @see #getWSMethods()
-     * @param handler  handler
      */
     @GuardedBy("this")
     public void addHandler(Handler<?> handler);
@@ -86,14 +86,14 @@ public interface WSEndpoint {
      * Create the webmethods' map and it back. This maps would be used by
      * clients to get a method to call and invoke it All calls of this method
      * apply all handlers added with {@link #addHandler(Handler)} method
-     * 
+     *
      * @return The list of WebMethod names
      */
     public Map<String, WSMethod> getWSMethods();
 
     /**
      * @return classLoader used to load JAXWS generated object see also
-     *         {@link #getUnderlyingObjectClass()}
+     * {@link #getUnderlyingObjectClass()}
      */
     public ClassLoader getClassLoader();
 
@@ -104,9 +104,8 @@ public interface WSEndpoint {
      * object associated to this endpoint {@link #getWSMethods()} see also
      * {@link WSExtensionEnabler} for more information on how to enable
      * WSExtensions
-     * 
-     * @param enabler
-     *            it is an implementation of {@link WSExtensionEnabler}
+     *
+     * @param enabler it is an implementation of {@link WSExtensionEnabler}
      */
     @GuardedBy("this")
     public void addWSExtension(WSExtensionEnabler enabler);
@@ -124,7 +123,6 @@ public interface WSEndpoint {
     public List<WSExtensionEnabler> getExtensions();
 
     /**
-     * 
      * @return the target url to invoke for this endpoint
      */
     @GuardedBy("this")
@@ -139,7 +137,7 @@ public interface WSEndpoint {
     /**
      * it give the opportunity to change target url of the endpoint defined in
      * the wsdl
-     * 
+     *
      * @param targetUrl string
      */
     @GuardedBy("this")

@@ -44,7 +44,6 @@ import java.io.File;
 import java.lang.reflect.ParameterizedType;
 import java.net.URL;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * @author alessio.soldano@jboss.com
@@ -149,7 +148,7 @@ public class WiseIntegrationComplexTest extends WiseTest {
         Assert.assertNotNull(test.get("exception"));
         Assert.assertTrue(test.get("exception").toString().contains("No name!"));
         Assert.assertEquals(Class.class, test.get("type.result").getClass());
-        Assert.assertEquals("org.jboss.test.ws.jaxws.complex.types.ValidationFaultException", ((Class)(test.get("type.result"))).getName());
+        Assert.assertEquals("org.jboss.test.ws.jaxws.complex.types.ValidationFaultException", ((Class) (test.get("type.result"))).getName());
         tearDown();
     }
 

@@ -21,18 +21,20 @@
  */
 package org.jboss.wise.core.client.impl.reflection;
 
-import static org.hamcrest.collection.IsCollectionContaining.hasItem;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.Map;
-import javax.xml.ws.WebEndpoint;
 import net.jcip.annotations.Immutable;
 import org.jboss.wise.core.client.WSEndpoint;
 import org.jboss.wise.core.client.WSService;
 import org.junit.Test;
+
+import javax.xml.ws.WebEndpoint;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.Map;
+
+import static org.hamcrest.collection.IsCollectionContaining.hasItem;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author stefano.maestri@javalinux.it
@@ -40,32 +42,32 @@ import org.junit.Test;
 @Immutable
 public class WSServiceImplTest {
 
-    @WebEndpoint( name = "EndPoint1" )
+    @WebEndpoint(name = "EndPoint1")
     public String getEndPointForTest1() {
         return " ";
     }
 
-    @WebEndpoint( name = "EndPoint2" )
+    @WebEndpoint(name = "EndPoint2")
     public Integer getEndPointForTes2() {
         return Integer.valueOf(3);
     }
 
     @Test
     public void shouldProcessEndPoint() throws Exception {
-        URLClassLoader loader = new URLClassLoader(new URL[] {}, Thread.currentThread().getContextClassLoader());
+        URLClassLoader loader = new URLClassLoader(new URL[]{}, Thread.currentThread().getContextClassLoader());
         WSService service = new WSServiceImpl(WSServiceImplTest.class, loader, this, null, null, null, 10);
         Map<String, WSEndpoint> endpoints = service.processEndpoints();
         assertThat(endpoints.keySet(), hasItem("EndPoint1"));
         assertThat(endpoints.keySet(), hasItem("EndPoint2"));
 
         WSEndpoint endPoint1 = endpoints.get("EndPoint1");
-        assertThat((URLClassLoader)endPoint1.getClassLoader(), is(loader));
+        assertThat((URLClassLoader) endPoint1.getClassLoader(), is(loader));
         assertThat(endPoint1.getUnderlyingObjectClass().getCanonicalName(), equalTo(String.class.getCanonicalName()));
-        assertThat((String)endPoint1.createInstance(), equalTo(" "));
+        assertThat((String) endPoint1.createInstance(), equalTo(" "));
         WSEndpoint endPoint2 = endpoints.get("EndPoint2");
-        assertThat((URLClassLoader)endPoint2.getClassLoader(), is(loader));
+        assertThat((URLClassLoader) endPoint2.getClassLoader(), is(loader));
         assertThat(endPoint2.getUnderlyingObjectClass().getCanonicalName(), equalTo(Integer.class.getCanonicalName()));
-        assertThat((Integer)endPoint2.createInstance(), equalTo(Integer.valueOf(3)));
+        assertThat((Integer) endPoint2.createInstance(), equalTo(Integer.valueOf(3)));
 
     }
 }

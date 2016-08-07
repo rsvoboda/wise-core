@@ -21,20 +21,22 @@
  */
 package org.jboss.wise.test.integration.jbide14739;
 
+import org.jboss.ws.api.annotation.WebContext;
+
 import javax.jws.WebService;
 
-import org.jboss.ws.api.annotation.WebContext;
 @WebService(endpointInterface = "org.jboss.wise.test.integration.jbide14739.HelloWorldBInterface",
-	    targetNamespace = "http://www.javalinux.it/helloworld",
-	    portName = "HelloWorldBeanPort",
-	    name = "HelloWorldInterface",
-	    serviceName = "HelloService" )
-@WebContext(contextRoot="jbide14739")
+        targetNamespace = "http://www.javalinux.it/helloworld",
+        portName = "HelloWorldBeanPort",
+        name = "HelloWorldInterface",
+        serviceName = "HelloService")
+@WebContext(contextRoot = "jbide14739")
 public class HelloWorldBBean implements HelloWorldBInterface {
-    public String echo( String input ) {
+    public String echo(String input) {
         return input;
     }
-    public String echoB( String input ) {
+
+    public String echoB(String input) {
         return input;
     }
 }

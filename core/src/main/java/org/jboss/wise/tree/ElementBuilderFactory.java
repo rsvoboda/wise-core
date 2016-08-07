@@ -20,11 +20,10 @@ import org.jboss.wise.core.client.SpiLoader;
 
 /**
  * @author alessio.soldano@jboss.com
- * 
  */
 public abstract class ElementBuilderFactory {
 
     public static ElementBuilder getElementBuilder() {
-	return (ElementBuilder) SpiLoader.loadService("org.jboss.wise.tree.ElementBuilder", "org.jboss.wise.tree.impl.ElementBuilderImpl");
+        return (ElementBuilder) SpiLoader.loadService("org.jboss.wise.tree.ElementBuilder", "org.jboss.wise.tree.impl.ElementBuilderImpl");
     }
 }

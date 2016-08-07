@@ -63,33 +63,33 @@ public class WSDLResolverIntegrationTest extends WiseTest {
                 .addClass(org.jboss.wise.test.integration.wsdlResolver.SimpleWsdlProvider.class)
                 .addClass(org.jboss.wise.test.integration.wsdlResolver.WsdlImportProvider.class)
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaAndWsdlImport/AnotherSchema.xsd"),
-                    "/wsdl/SchemaAndWsdlImport/AnotherSchema.xsd")
+                        "/wsdl/SchemaAndWsdlImport/AnotherSchema.xsd")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaAndWsdlImport/Bindings.wsdl"),
-                    "/wsdl/SchemaAndWsdlImport/Bindings.wsdl")
+                        "/wsdl/SchemaAndWsdlImport/Bindings.wsdl")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaAndWsdlImport/SchemaImport.xsd"),
-                    "/wsdl/SchemaAndWsdlImport/SchemaImport.xsd")
+                        "/wsdl/SchemaAndWsdlImport/SchemaImport.xsd")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaAndWsdlImport/WsdlWithSchemaAndWsdlImport.wsdl"),
-                    "/wsdl/SchemaAndWsdlImport/WsdlWithSchemaAndWsdlImport.wsdl")
+                        "/wsdl/SchemaAndWsdlImport/WsdlWithSchemaAndWsdlImport.wsdl")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaAndWsdlImport/bar/BarImport.wsdl"),
-                    "/wsdl/SchemaAndWsdlImport/bar/BarImport.wsdl")
+                        "/wsdl/SchemaAndWsdlImport/bar/BarImport.wsdl")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaAndWsdlImport/bar/BarSchema.xsd"),
-                    "/wsdl/SchemaAndWsdlImport/bar/BarSchema.xsd")
+                        "/wsdl/SchemaAndWsdlImport/bar/BarSchema.xsd")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaAndWsdlImport/foo/AdditionalSchema.xsd"),
-                    "/wsdl/SchemaAndWsdlImport/foo/AdditionalSchema.xsd")
+                        "/wsdl/SchemaAndWsdlImport/foo/AdditionalSchema.xsd")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaAndWsdlImport/foo/AnotherImport.wsdl"),
-                    "/wsdl/SchemaAndWsdlImport/foo/AnotherImport.wsdl")
+                        "/wsdl/SchemaAndWsdlImport/foo/AnotherImport.wsdl")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaImport/SchemaImport.xsd"),
-                    "/wsdl/SchemaImport/SchemaImport.xsd")
+                        "/wsdl/SchemaImport/SchemaImport.xsd")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/SchemaImport/WsdlWithSchemaImport.wsdl"),
-                    "/wsdl/SchemaImport/WsdlWithSchemaImport.wsdl")
+                        "/wsdl/SchemaImport/WsdlWithSchemaImport.wsdl")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/Simple/SimpleWsdl.wsdl"),
-                    "/wsdl/Simple/SimpleWsdl.wsdl")
+                        "/wsdl/Simple/SimpleWsdl.wsdl")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/WsdlImport/Bindings.wsdl"),
-                    "/wsdl/WsdlImport/Bindings.wsdl")
+                        "/wsdl/WsdlImport/Bindings.wsdl")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/wsdl/WsdlImport/WsdlWithWsdlImport.wsdl"),
                         "/wsdl/WsdlImport/WsdlWithWsdlImport.wsdl")
                 .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/jboss-web.xml"),
-                    "jboss-web.xml")
+                        "jboss-web.xml")
                 .setWebXML(new File(getTestResourcesDir() + "/WEB-INF/wsdlResolver/web.xml"));
 
         return archive;

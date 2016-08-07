@@ -21,13 +21,6 @@
  */
 package org.jboss.wise.test.integration.basic;
 
-import java.io.File;
-import java.net.URL;
-import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -43,6 +36,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.File;
+import java.net.URL;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
+
 @RunWith(Arquillian.class)
 public class BasicStressTest extends WiseTest {
 
@@ -56,9 +57,9 @@ public class BasicStressTest extends WiseTest {
     public static WebArchive createDeployment() {
         WebArchive archive = ShrinkWrap.create(WebArchive.class, WAR + ".war");
         archive
-           .addClass(org.jboss.wise.test.integration.basic.HelloWorldInterface.class)
-           .addClass(org.jboss.wise.test.integration.basic.HelloWorldBean.class)
-           .setWebXML(new File(getTestResourcesDir() + "/WEB-INF/basic/web.xml"));
+                .addClass(org.jboss.wise.test.integration.basic.HelloWorldInterface.class)
+                .addClass(org.jboss.wise.test.integration.basic.HelloWorldBean.class)
+                .setWebXML(new File(getTestResourcesDir() + "/WEB-INF/basic/web.xml"));
         return archive;
     }
 
@@ -76,7 +77,7 @@ public class BasicStressTest extends WiseTest {
         // other caching mechanism. Initializing client is very expensive!!
         // You have a proof of that in BasicNoCacheNoClientCacheStressTest.java
         WSDynamicClient client = clientBuilder.tmpDir("target/temp/wise").verbose(true).keepSource(true).wsdlURL(wsdlURL
-            .toString()).build();
+                .toString()).build();
 
         ExecutorService es = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
         FutureTask<String>[] tasks = new FutureTask[THREADS];

@@ -1,4 +1,3 @@
-
 package org.jboss.wise.test.integration.complex;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for RegisterForInvoice complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="RegisterForInvoice">
  *   &lt;complexContent>
@@ -23,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RegisterForInvoice", propOrder = {
-    "invoiceCustomer"
+        "invoiceCustomer"
 })
 public class RegisterForInvoice {
 
@@ -37,11 +34,9 @@ public class RegisterForInvoice {
 
     /**
      * Gets the value of the invoiceCustomer property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link InvoiceCustomer }
-     *     
+     *
+     * @return possible object is
+     * {@link InvoiceCustomer }
      */
     public InvoiceCustomer getInvoiceCustomer() {
         return invoiceCustomer;
@@ -49,11 +44,9 @@ public class RegisterForInvoice {
 
     /**
      * Sets the value of the invoiceCustomer property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link InvoiceCustomer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link InvoiceCustomer }
      */
     public void setInvoiceCustomer(InvoiceCustomer value) {
         this.invoiceCustomer = value;

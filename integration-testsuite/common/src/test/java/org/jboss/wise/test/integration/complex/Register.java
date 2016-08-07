@@ -1,18 +1,13 @@
-
 package org.jboss.wise.test.integration.complex;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for Register complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Register">
  *   &lt;complexContent>
@@ -25,13 +20,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Register", propOrder = {
-    "customer",
-    "when"
+        "customer",
+        "when"
 })
 public class Register {
 
@@ -43,11 +36,9 @@ public class Register {
 
     /**
      * Gets the value of the customer property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Customer }
-     *     
+     *
+     * @return possible object is
+     * {@link Customer }
      */
     public Customer getCustomer() {
         return customer;
@@ -55,11 +46,9 @@ public class Register {
 
     /**
      * Sets the value of the customer property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Customer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Customer }
      */
     public void setCustomer(Customer value) {
         this.customer = value;
@@ -67,11 +56,9 @@ public class Register {
 
     /**
      * Gets the value of the when property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
+     *
+     * @return possible object is
+     * {@link Object }
      */
     public Object getWhen() {
         return when;
@@ -79,11 +66,9 @@ public class Register {
 
     /**
      * Sets the value of the when property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Object }
      */
     public void setWhen(Object value) {
         this.when = value;

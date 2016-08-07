@@ -1,20 +1,15 @@
-
 package org.jboss.wise.test.integration.complex;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for BulkRegister complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="BulkRegister">
  *   &lt;complexContent>
@@ -27,13 +22,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BulkRegister", propOrder = {
-    "customers",
-    "when"
+        "customers",
+        "when"
 })
 public class BulkRegister {
 
@@ -45,25 +38,23 @@ public class BulkRegister {
 
     /**
      * Gets the value of the customers property.
-     * 
+     * <p>
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the customers property.
-     * 
+     * <p>
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCustomers().add(newItem);
      * </pre>
-     * 
-     * 
+     * <p>
+     * <p>
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Customer }
-     * 
-     * 
      */
     public List<Customer> getCustomers() {
         if (customers == null) {
@@ -74,11 +65,9 @@ public class BulkRegister {
 
     /**
      * Gets the value of the when property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
+     *
+     * @return possible object is
+     * {@link Object }
      */
     public Object getWhen() {
         return when;
@@ -86,11 +75,9 @@ public class BulkRegister {
 
     /**
      * Sets the value of the when property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Object }
      */
     public void setWhen(Object value) {
         this.when = value;

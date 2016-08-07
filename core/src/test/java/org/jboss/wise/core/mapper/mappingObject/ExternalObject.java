@@ -21,8 +21,9 @@
  */
 package org.jboss.wise.core.mapper.mappingObject;
 
-import java.util.Date;
 import org.apache.commons.lang.builder.ToStringBuilder;
+
+import java.util.Date;
 
 /**
  * @author stefano.maestri@javalinux.it
@@ -36,7 +37,7 @@ public class ExternalObject {
         return internal;
     }
 
-    public void setInternal( InternalObject internal ) {
+    public void setInternal(InternalObject internal) {
         this.internal = internal;
     }
 
@@ -44,7 +45,7 @@ public class ExternalObject {
         return date;
     }
 
-    public void setDate( Date date ) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

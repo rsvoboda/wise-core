@@ -34,7 +34,7 @@ import net.jcip.annotations.ThreadSafe;
  * operation/configurations needed to do so. You can always provide your own
  * implementation of {@link EnablerDelegate} if you need something different
  * during enabling of Extensions.
- * 
+ *
  * @author stefano.maestri@javalinux.it
  */
 @ThreadSafe
@@ -42,44 +42,40 @@ public interface EnablerDelegate {
 
     /**
      * Sets the configFile to be used, if any
-     * 
-     * @param configFile  string
+     *
+     * @param configFile string
      */
     public void setConfigFile(String configFile);
-    
+
     /**
      * Sets the configName to be used, if any
-     * 
-     * @param configName  string
+     *
+     * @param configName string
      */
     public void setConfigName(String configName);
-    
+
     /**
-     * 
-     * @param endpointInstance  object
-     * @throws UnsupportedOperationException   unsupported operation
-     * @throws IllegalStateException    illegal state
+     * @param endpointInstance object
+     * @throws UnsupportedOperationException unsupported operation
+     * @throws IllegalStateException         illegal state
      */
     public void visitWSSecurity(Object endpointInstance) throws UnsupportedOperationException, IllegalStateException;
 
     /**
-     * 
-     * @param endpointInstance  object
-     * @throws UnsupportedOperationException  unsupported operation
+     * @param endpointInstance object
+     * @throws UnsupportedOperationException unsupported operation
      */
     public void visitWSRM(Object endpointInstance) throws UnsupportedOperationException;
 
     /**
-     * 
-     * @param endpointInstance   object
-     * @throws UnsupportedOperationException  unsupported operation
+     * @param endpointInstance object
+     * @throws UnsupportedOperationException unsupported operation
      */
     public void visitWSAddressing(Object endpointInstance) throws UnsupportedOperationException;
 
     /**
-     * 
-     * @param endpointInstance  object
-     * @throws UnsupportedOperationException  unsupported operation
+     * @param endpointInstance object
+     * @throws UnsupportedOperationException unsupported operation
      */
     public void visitMTOM(Object endpointInstance) throws UnsupportedOperationException;
 }

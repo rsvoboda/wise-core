@@ -1,4 +1,3 @@
-
 package org.jboss.wise.test.integration.complex;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for EchoResponse complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="EchoResponse">
  *   &lt;complexContent>
@@ -23,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EchoResponse", propOrder = {
-    "customer"
+        "customer"
 })
 public class EchoResponse {
 
@@ -37,11 +34,9 @@ public class EchoResponse {
 
     /**
      * Gets the value of the customer property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Customer }
-     *     
+     *
+     * @return possible object is
+     * {@link Customer }
      */
     public Customer getCustomer() {
         return customer;
@@ -49,11 +44,9 @@ public class EchoResponse {
 
     /**
      * Sets the value of the customer property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Customer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Customer }
      */
     public void setCustomer(Customer value) {
         this.customer = value;

@@ -22,7 +22,6 @@
 package org.jboss.wise.core.client;
 
 import net.jcip.annotations.ThreadSafe;
-
 import org.jboss.wise.core.wsextensions.EnablerDelegate;
 import org.milyn.Smooks;
 
@@ -30,24 +29,22 @@ import org.milyn.Smooks;
  * This is the Wise core class responsible to invoke the JAX-WS tools that
  * handles wsdl retrieval &amp; parsing. It is used to build the list of WSService
  * representing the services available in parsed wsdl.
- * 
+ *
  * @author Stefano Maestri, stefano.maestri@javalinux.it
  */
 @ThreadSafe
 public interface WSDynamicClient extends BasicWSDynamicClient {
 
     /**
-     * 
      * @return the {@link EnablerDelegate} used to enable the WS-* for all
-     *         endpoint attached all serivices attached to this
-     *         {@link WSDynamicClient}.
+     * endpoint attached all serivices attached to this
+     * {@link WSDynamicClient}.
      */
     public EnablerDelegate getWSExtensionEnablerDelegate();
 
     /**
-     * 
      * @return the single smooks instance attached to this
-     *         {@link WSDynamicClient}
+     * {@link WSDynamicClient}
      */
     public Smooks getSmooksInstance();
 

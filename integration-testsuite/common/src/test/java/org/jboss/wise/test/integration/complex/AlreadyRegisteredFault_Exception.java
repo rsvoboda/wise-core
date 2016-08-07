@@ -1,4 +1,3 @@
-
 package org.jboss.wise.test.integration.complex;
 
 import javax.xml.ws.WebFault;
@@ -12,17 +11,17 @@ import javax.xml.ws.WebFault;
 
 @WebFault(name = "AlreadyRegisteredFault", targetNamespace = "http://types.complex.jaxws.ws.test.jboss.org/")
 public class AlreadyRegisteredFault_Exception extends Exception {
-    
+
     private org.jboss.wise.test.integration.complex.AlreadyRegisteredFault alreadyRegisteredFault;
 
     public AlreadyRegisteredFault_Exception() {
         super();
     }
-    
+
     public AlreadyRegisteredFault_Exception(String message) {
         super(message);
     }
-    
+
     public AlreadyRegisteredFault_Exception(String message, Throwable cause) {
         super(message, cause);
     }

@@ -21,13 +21,15 @@
  */
 package org.jboss.wise.core.client.impl.reflection;
 
+import org.jboss.wise.core.client.WSMethod;
+import org.junit.Test;
+
+import javax.jws.WebMethod;
+import java.util.Map;
+
 import static org.hamcrest.collection.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import java.util.Map;
-import javax.jws.WebMethod;
-import org.jboss.wise.core.client.WSMethod;
-import org.junit.Test;
 
 /**
  * @author stefano.maestri@javalinux.it
@@ -39,7 +41,7 @@ public class WSEndpointImplTest {
 
     }
 
-    @WebMethod( )
+    @WebMethod()
     public void method2() {
 
     }

@@ -22,12 +22,11 @@ import java.util.Iterator;
 
 /**
  * @author alessio.soldano@jboss.com
- * 
  */
 public interface Element extends Serializable, Cloneable {
 
     public boolean isLeaf();
-    
+
     public boolean isRemovable();
 
     public Type getClassType();
@@ -41,36 +40,37 @@ public interface Element extends Serializable, Cloneable {
     public String getId();
 
     public boolean isNillable();
-    
+
     public boolean isGroup();
 
     public void removeChild(String id);
-    
+
     public Element getChild(String id);
-    
+
     public Element getChildByName(String name);
-    
+
     public Iterator<String> getChildrenIDs();
-    
+
     public Iterator<? extends Element> getChildren();
-    
+
     public String getValue();
 
     public void setValue(String value);
-    
+
     public Element getPrototype();
 
     public Element incrementChildren();
-    
+
     public int getChildrenCount();
-    
+
     public boolean isLazy();
-    
+
     public boolean isResolved();
-    
+
     /**
      * Every WiseTreeElement must be cloneable; this is required to handle
      * element's add and removal into/from arrays and collections.
+     *
      * @return element
      */
     public Element clone();
@@ -78,7 +78,7 @@ public interface Element extends Serializable, Cloneable {
     /**
      * This is required to convert a tree element into the corresponding object
      * instance.
-     * 
+     *
      * @return The object corresponding to this element
      */
     public Object toObject();

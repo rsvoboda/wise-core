@@ -16,22 +16,21 @@
  */
 package org.jboss.wise.tree;
 
-import java.lang.reflect.Type;
-
 import org.jboss.wise.core.client.WSDynamicClient;
+
+import java.lang.reflect.Type;
 
 /**
  * @author alessio.soldano@jboss.com
- * 
  */
 public interface ElementBuilder {
 
     public ElementBuilder client(WSDynamicClient client);
-    
+
     public ElementBuilder request(boolean request);
-    
+
     public ElementBuilder useDefautValuesForNullLeaves(boolean useDefValuesForNullLeaves);
-    
+
     public Element buildTree(Type type, String name, Object value, boolean nillable);
 
 }

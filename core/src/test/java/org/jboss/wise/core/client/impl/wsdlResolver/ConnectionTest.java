@@ -21,50 +21,47 @@
  */
 package org.jboss.wise.core.client.impl.wsdlResolver;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import org.apache.commons.codec.binary.Base64;
+import org.jboss.wise.core.exception.WiseRuntimeException;
+import org.junit.Test;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 
-import org.apache.commons.codec.binary.Base64;
-import org.jboss.wise.core.exception.WiseRuntimeException;
-import org.junit.Test;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.*;
 
 /**
  * Class to test {@link Connection}
- * 
+ *
  * @author stefano.maestri@javalinux.it
  * @author alessio.soldano@jboss.com
  */
 public class ConnectionTest {
-    
+
     private Connection connection = new Connection();
-    
+
     @Test
     public void userNameAndPasswordForBasicAuthenticationShouldReturnNullForNullUserOrPassword() throws Exception {
-	connection.setUsername(null);
-	connection.setPassword("password");
-        assertThat(connection.getUserNameAndPasswordForBasicAuthentication(), is((String)null));
+        connection.setUsername(null);
+        connection.setPassword("password");
+        assertThat(connection.getUserNameAndPasswordForBasicAuthentication(), is((String) null));
         connection.setUsername("user");
         connection.setPassword(null);
-        assertThat(connection.getUserNameAndPasswordForBasicAuthentication(), is((String)null));
+        assertThat(connection.getUserNameAndPasswordForBasicAuthentication(), is((String) null));
     }
 
     @Test
     public void userNameAndPasswordForBasicAuthenticationShouldReturnValidBaseAuthEncoding() throws Exception {
-	connection.setUsername("username");
-	connection.setPassword("password");
+        connection.setUsername("username");
+        connection.setPassword("password");
         assertThat(connection.getUserNameAndPasswordForBasicAuthentication(), is("username:password"));
     }
-    
-    @Test( expected = WiseRuntimeException.class )
+
+    @Test(expected = WiseRuntimeException.class)
     public void getWsdlInputStreamShouldThrowConnectExceptionIfHttpResultIsnt200() throws Exception {
         HttpURLConnection conn = mock(HttpURLConnection.class);
         when(conn.getResponseCode()).thenReturn(401);
@@ -91,7 +88,7 @@ public class ConnectionTest {
         verify(conn).setUseCaches(false);
         verify(conn).setRequestMethod("GET");
         verify(conn).setRequestProperty("Accept",
-                                        "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
+                "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
         verify(conn).setRequestProperty("Connection", "close");
         verify(conn).setRequestProperty("Authorization", "Basic " + new String(Base64.encodeBase64("username:password".getBytes())));
     }
@@ -107,7 +104,7 @@ public class ConnectionTest {
         verify(conn).setUseCaches(false);
         verify(conn).setRequestMethod("GET");
         verify(conn).setRequestProperty("Accept",
-                                        "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
+                "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
         verify(conn).setRequestProperty("Connection", "close");
     }
 
@@ -120,15 +117,15 @@ public class ConnectionTest {
         verify(conn).setUseCaches(false);
         verify(conn).setRequestMethod("GET");
         verify(conn).setRequestProperty("Accept",
-                                        "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
+                "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
         verify(conn).setRequestProperty("Connection", "close");
     }
 
-    @Test( expected = WiseRuntimeException.class )
+    @Test(expected = WiseRuntimeException.class)
     public void initConnectionShouldThrowWiseRuntimeExceptionWhenGotException() throws Exception {
         HttpURLConnection conn = mock(HttpURLConnection.class);
         doThrow(new ProtocolException()).when(conn).setRequestMethod(anyString());
         connection.initConnection(conn);
     }
-    
+
 }

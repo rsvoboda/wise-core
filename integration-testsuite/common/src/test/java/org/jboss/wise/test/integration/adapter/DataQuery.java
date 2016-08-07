@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for dataQuery complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="dataQuery">
  *   &lt;complexContent>
@@ -42,12 +42,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataQuery", propOrder = {
-    "query"
+        "query"
 })
 public class DataQuery {
 
@@ -55,11 +53,9 @@ public class DataQuery {
 
     /**
      * Gets the value of the query property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getQuery() {
         return query;
@@ -67,11 +63,9 @@ public class DataQuery {
 
     /**
      * Sets the value of the query property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setQuery(String value) {
         this.query = value;

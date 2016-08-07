@@ -33,7 +33,7 @@ public interface PortType1 {
     @WebMethod(action = "http://www.javalinux.it/action")
     @WebResult(name = "out", targetNamespace = "http://www.javalinux.it", partName = "out")
     public String testMethod(
-        @WebParam(name = "in", targetNamespace = "http://www.javalinux.it", partName = "in")
-        String in);
+            @WebParam(name = "in", targetNamespace = "http://www.javalinux.it", partName = "in")
+                    String in);
 
 }

@@ -22,7 +22,6 @@
 package org.jboss.wise.core.client.impl.reflection;
 
 import net.jcip.annotations.ThreadSafe;
-
 import org.jboss.wise.core.client.SpiLoader;
 import org.jboss.wise.core.client.WSDynamicClient;
 import org.jboss.wise.core.client.builder.WSDynamicClientBuilder;
@@ -35,9 +34,8 @@ import org.milyn.Smooks;
 /**
  * This is the Wise core, i.e. the JAX-WS client that handles wsdl retrieval &amp;
  * parsing, invocations, etc.
- * 
- * @author Stefano Maestri, stefano.maestri@javalinux.it
  *
+ * @author Stefano Maestri, stefano.maestri@javalinux.it
  */
 @ThreadSafe
 public class WSDynamicClientImpl extends BasicWSDynamicClientImpl implements WSDynamicClient {
@@ -47,51 +45,51 @@ public class WSDynamicClientImpl extends BasicWSDynamicClientImpl implements WSD
     private final Smooks smooksInstance;
 
     /**
-     * @param builder  client builder
+     * @param builder client builder
      * @return consumer
      */
     private static WSConsumer createConsumer(WSDynamicClientBuilder builder) {
-	WSConsumer consumer = (WSConsumer) SpiLoader
-		.loadService("org.jboss.wise.consumer.WSConsumer", "org.jboss.wise.core.consumer.impl.jbossws.DefaultWSImportImpl");
-	consumer.setVerbose(builder.isVerbose());
-	consumer.setKeepSource(builder.isKeepSource());
-	return consumer;
+        WSConsumer consumer = (WSConsumer) SpiLoader
+                .loadService("org.jboss.wise.consumer.WSConsumer", "org.jboss.wise.core.consumer.impl.jbossws.DefaultWSImportImpl");
+        consumer.setVerbose(builder.isVerbose());
+        consumer.setKeepSource(builder.isKeepSource());
+        return consumer;
     }
 
     public WSDynamicClientImpl(WSDynamicClientBuilder builder) throws WiseRuntimeException {
-	this(builder, createConsumer(builder), new Smooks());
+        this(builder, createConsumer(builder), new Smooks());
     }
 
     protected WSDynamicClientImpl(WSDynamicClientBuilder builder, WSConsumer consumer) throws WiseRuntimeException {
-	this(builder, consumer, new Smooks());
+        this(builder, consumer, new Smooks());
     }
 
     protected WSDynamicClientImpl(WSDynamicClientBuilder builder, WSConsumer consumer, Smooks smooks) throws WiseRuntimeException {
-	super(builder, consumer);
-	this.smooksInstance = smooks;
-	wsExtensionEnablerDelegate = EnablerDelegateProvider.newEnablerDelegate(builder.getSecurityConfigFileURL(), builder
-		.getSecurityConfigName());
+        super(builder, consumer);
+        this.smooksInstance = smooks;
+        wsExtensionEnablerDelegate = EnablerDelegateProvider.newEnablerDelegate(builder.getSecurityConfigFileURL(), builder
+                .getSecurityConfigName());
     }
-    
+
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.jboss.wise.core.client.WSDynamicClient#getWSExtensionEnablerDelegate()
      */
     public EnablerDelegate getWSExtensionEnablerDelegate() {
-	return wsExtensionEnablerDelegate;
+        return wsExtensionEnablerDelegate;
     }
 
     /**
      * @return smooksInstance
      */
     public Smooks getSmooksInstance() {
-	return smooksInstance;
+        return smooksInstance;
     }
 
     public synchronized void close() {
-	smooksInstance.close();
-	super.close();
+        smooksInstance.close();
+        super.close();
     }
 
 }

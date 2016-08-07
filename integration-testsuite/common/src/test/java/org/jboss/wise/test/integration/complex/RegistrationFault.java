@@ -1,18 +1,13 @@
-
 package org.jboss.wise.test.integration.complex;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for RegistrationFault complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="RegistrationFault">
  *   &lt;complexContent>
@@ -24,16 +19,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RegistrationFault", namespace = "http://complex.jaxws.ws.test.jboss.org/", propOrder = {
-    "message"
+        "message"
 })
 @XmlSeeAlso({
-    ValidationFault.class,
-    AlreadyRegisteredFault.class
+        ValidationFault.class,
+        AlreadyRegisteredFault.class
 })
 public class RegistrationFault {
 
@@ -42,11 +35,9 @@ public class RegistrationFault {
 
     /**
      * Gets the value of the message property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getMessage() {
         return message;
@@ -54,11 +45,9 @@ public class RegistrationFault {
 
     /**
      * Sets the value of the message property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setMessage(String value) {
         this.message = value;

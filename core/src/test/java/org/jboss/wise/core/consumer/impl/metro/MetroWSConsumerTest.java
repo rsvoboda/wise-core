@@ -21,13 +21,14 @@
  */
 package org.jboss.wise.core.consumer.impl.metro;
 
-import java.io.File;
-import java.net.URL;
 import org.jboss.wise.core.exception.WiseRuntimeException;
 import org.junit.Test;
 
+import java.io.File;
+import java.net.URL;
+
 public class MetroWSConsumerTest {
-    @Test( expected = WiseRuntimeException.class )
+    @Test(expected = WiseRuntimeException.class)
     public void shouldThrowsWiseRuntimeExceptionIMetroHomeNotSet() throws Exception {
         MetroWSConsumer consumer = new MetroWSConsumer();
         // consumer.setMetroHome("/home/jimma/java/metro/1.2");

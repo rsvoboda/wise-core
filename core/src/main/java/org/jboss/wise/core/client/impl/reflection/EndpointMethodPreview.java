@@ -21,12 +21,7 @@
  */
 package org.jboss.wise.core.client.impl.reflection;
 
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.lang.reflect.Method;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import org.jboss.wise.core.client.WSEndpoint;
 
 import javax.xml.namespace.QName;
 import javax.xml.transform.OutputKeys;
@@ -40,14 +35,18 @@ import javax.xml.ws.handler.Handler;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
-
-import org.jboss.wise.core.client.WSEndpoint;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class EndpointMethodPreview extends EndpointMethodCaller {
-    
+
     private final PreviewHandler handler;
 
-    public EndpointMethodPreview( WSEndpoint epInstance,
+    public EndpointMethodPreview(WSEndpoint epInstance,
                                  Method methodPointer,
                                  Object[] args,
                                  OutputStream previewOutputStream) {
@@ -67,53 +66,53 @@ public class EndpointMethodPreview extends EndpointMethodCaller {
 
     @Override
     public void addHandlers() {
-	super.addHandlers();
-	Binding binding = ((BindingProvider) epUnderlyingObjectInstance.get()).getBinding();
-	@SuppressWarnings("rawtypes")
-	List<Handler> handlerChain = binding.getHandlerChain();
-	handlerChain.add(handler);
-	binding.setHandlerChain(handlerChain);
+        super.addHandlers();
+        Binding binding = ((BindingProvider) epUnderlyingObjectInstance.get()).getBinding();
+        @SuppressWarnings("rawtypes")
+        List<Handler> handlerChain = binding.getHandlerChain();
+        handlerChain.add(handler);
+        binding.setHandlerChain(handlerChain);
     }
-    
+
     private class PreviewHandler implements SOAPHandler<SOAPMessageContext> {
-	
-	private OutputStream os;
-	
-	public PreviewHandler(OutputStream os) {
-	    this.os = os;
-	}
 
-	@Override
-	public boolean handleMessage(SOAPMessageContext context) {
-	    try {
-		TransformerFactory tff = TransformerFactory.newInstance();
-		Transformer tf = tff.newTransformer();
-		tf.setOutputProperty(OutputKeys.INDENT, "yes");
-		tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-		
-		Source sc = context.getMessage().getSOAPPart().getContent();
-		
-		StreamResult result = new StreamResult(os);
-		tf.transform(sc, result);
-		
-	    } catch (Exception e) {
-		e.printStackTrace(new PrintStream(os));
-	    }
-	    return false; //to stop processing handler chain, reverse direction and eventually get back to caller
-	}
+        private OutputStream os;
 
-	@Override
-	public boolean handleFault(SOAPMessageContext context) {
-	    return true;
-	}
+        public PreviewHandler(OutputStream os) {
+            this.os = os;
+        }
 
-	@Override
-	public void close(MessageContext context) {
-	}
+        @Override
+        public boolean handleMessage(SOAPMessageContext context) {
+            try {
+                TransformerFactory tff = TransformerFactory.newInstance();
+                Transformer tf = tff.newTransformer();
+                tf.setOutputProperty(OutputKeys.INDENT, "yes");
+                tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 
-	@Override
-	public Set<QName> getHeaders() {
-	    return new HashSet<QName>(); // empty set
-	}
+                Source sc = context.getMessage().getSOAPPart().getContent();
+
+                StreamResult result = new StreamResult(os);
+                tf.transform(sc, result);
+
+            } catch (Exception e) {
+                e.printStackTrace(new PrintStream(os));
+            }
+            return false; //to stop processing handler chain, reverse direction and eventually get back to caller
+        }
+
+        @Override
+        public boolean handleFault(SOAPMessageContext context) {
+            return true;
+        }
+
+        @Override
+        public void close(MessageContext context) {
+        }
+
+        @Override
+        public Set<QName> getHeaders() {
+            return new HashSet<QName>(); // empty set
+        }
     }
 }

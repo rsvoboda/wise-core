@@ -1,18 +1,13 @@
-
 package org.jboss.wise.test.integration.complex;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for Statistics complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Statistics">
  *   &lt;complexContent>
@@ -25,13 +20,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Statistics", namespace = "http://extra.complex.jaxws.ws.test.jboss.org/", propOrder = {
-    "activationTime",
-    "hits"
+        "activationTime",
+        "hits"
 })
 public class Statistics {
 
@@ -42,11 +35,9 @@ public class Statistics {
 
     /**
      * Gets the value of the activationTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
+     *
+     * @return possible object is
+     * {@link Object }
      */
     public Object getActivationTime() {
         return activationTime;
@@ -54,11 +45,9 @@ public class Statistics {
 
     /**
      * Sets the value of the activationTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Object }
      */
     public void setActivationTime(Object value) {
         this.activationTime = value;
@@ -66,7 +55,6 @@ public class Statistics {
 
     /**
      * Gets the value of the hits property.
-     * 
      */
     public long getHits() {
         return hits;
@@ -74,7 +62,6 @@ public class Statistics {
 
     /**
      * Sets the value of the hits property.
-     * 
      */
     public void setHits(long value) {
         this.hits = value;

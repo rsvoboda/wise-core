@@ -21,17 +21,18 @@
  */
 package org.jboss.wise.core.client.impl.reflection;
 
-import java.lang.reflect.Type;
-import javax.jws.WebParam;
-import javax.jws.WebParam.Mode;
 import net.jcip.annotations.Immutable;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.jboss.wise.core.client.WebParameter;
 
+import javax.jws.WebParam;
+import javax.jws.WebParam.Mode;
+import java.lang.reflect.Type;
+
 /**
  * Holds single parameter's data required for an invocation
- * 
+ *
  * @author stefano.maestri@javalinux.it
  */
 @Immutable
@@ -46,15 +47,15 @@ public class WebParameterImpl implements WebParameter {
     private final Enum<WebParam.Mode> mode;
 
     /**
-     * @param type  type
-     * @param name  string
+     * @param type     type
+     * @param name     string
      * @param position int
-     * @param mode enum
+     * @param mode     enum
      */
-    public WebParameterImpl( Type type,
-                             String name,
-                             int position,
-                             Enum<Mode> mode ) {
+    public WebParameterImpl(Type type,
+                            String name,
+                            int position,
+                            Enum<Mode> mode) {
         super();
         this.type = type;
         this.name = name;
@@ -64,7 +65,7 @@ public class WebParameterImpl implements WebParameter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.jboss.wise.core.client.WebParameter#getMode()
      */
     public Enum<Mode> getMode() {
@@ -73,7 +74,7 @@ public class WebParameterImpl implements WebParameter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.jboss.wise.core.client.WebParameter#getName()
      */
     public String getName() {
@@ -82,7 +83,7 @@ public class WebParameterImpl implements WebParameter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.jboss.wise.core.client.WebParameter#getPosition()
      */
     public int getPosition() {
@@ -91,7 +92,7 @@ public class WebParameterImpl implements WebParameter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.jboss.wise.core.client.WebParameter#getType()
      */
     public Type getType() {
@@ -100,7 +101,7 @@ public class WebParameterImpl implements WebParameter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -110,11 +111,11 @@ public class WebParameterImpl implements WebParameter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals( Object obj ) {
+    public boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
 

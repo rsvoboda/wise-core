@@ -21,16 +21,16 @@
  */
 package org.jboss.wise.core.client;
 
+import net.jcip.annotations.ThreadSafe;
+import org.jboss.wise.core.exception.ResourceNotAvailableException;
+
 import java.util.List;
 import java.util.Map;
-
-import org.jboss.wise.core.exception.ResourceNotAvailableException;
-import net.jcip.annotations.ThreadSafe;
 
 /**
  * Basic version of WSDynamicClient offering no extension and Smooks configuration
  * funcitonalities.
- * 
+ *
  * @author Stefano Maestri, stefano.maestri@javalinux.it
  */
 @ThreadSafe
@@ -39,11 +39,10 @@ public interface BasicWSDynamicClient {
     /**
      * Create the services' map and gives it back. Useful when Wise is used for
      * interactive explore and invoke a service.
-     * 
+     *
      * @return The Map of WSEndpoint with symbolic names as keys
-     * @throws IllegalStateException
-     *             thrown if method can't process or load generated classes to
-     *             find a service
+     * @throws IllegalStateException thrown if method can't process or load generated classes to
+     *                               find a service
      */
     public Map<String, WSService> processServices() throws IllegalStateException;
 
@@ -51,7 +50,7 @@ public interface BasicWSDynamicClient {
      * @return The classLoader used to load generated class.
      */
     public ClassLoader getClassLoader();
-    
+
     /**
      * @return The ObjectFactory classes for the generated sources
      */
@@ -62,14 +61,13 @@ public interface BasicWSDynamicClient {
      * port of specified service. It is the base method for
      * "one line of code invocation" (see "Wise-core Programmers guide" for more
      * information)
-     * 
-     * @param serviceName  string
-     * @param portName   string
+     *
+     * @param serviceName   string
+     * @param portName      string
      * @param operationName string
-     * @throws ResourceNotAvailableException
-     *             when the specified service, port or operation can not be
-     *             found
      * @return the WSMethod class to use for effective service invocation
+     * @throws ResourceNotAvailableException when the specified service, port or operation can not be
+     *                                       found
      */
     public WSMethod getWSMethod(String serviceName, String portName, String operationName) throws ResourceNotAvailableException;
 

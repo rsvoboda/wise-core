@@ -1,4 +1,3 @@
-
 package org.jboss.wise.test.integration.complex;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GetStatisticsResponse complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="GetStatisticsResponse">
  *   &lt;complexContent>
@@ -23,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GetStatisticsResponse", propOrder = {
-    "statistics"
+        "statistics"
 })
 public class GetStatisticsResponse {
 
@@ -37,11 +34,9 @@ public class GetStatisticsResponse {
 
     /**
      * Gets the value of the statistics property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Statistics }
-     *     
+     *
+     * @return possible object is
+     * {@link Statistics }
      */
     public Statistics getStatistics() {
         return statistics;
@@ -49,11 +44,9 @@ public class GetStatisticsResponse {
 
     /**
      * Sets the value of the statistics property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Statistics }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Statistics }
      */
     public void setStatistics(Statistics value) {
         this.statistics = value;

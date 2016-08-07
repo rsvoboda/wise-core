@@ -21,28 +21,28 @@
  */
 package org.jboss.wise.core.utils;
 
+import org.jboss.wise.core.exception.WiseRuntimeException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.jboss.wise.core.exception.WiseRuntimeException;
-
 /**
  * IO utilities
- * 
+ *
  * @author stefano.maestri@javalinux.it
  */
 public final class IOUtils {
-    
+
     /**
      * True if the given type name is the source notation of a primitive or array of which.
      *
      * @param outs output stream
      * @param ins  input stream
-     * @throws WiseRuntimeException  wrapped runtime exception
+     * @throws WiseRuntimeException wrapped runtime exception
      */
-    public static void copyStreamAndClose( OutputStream outs,
-                                    InputStream ins ) throws WiseRuntimeException {
+    public static void copyStreamAndClose(OutputStream outs,
+                                          InputStream ins) throws WiseRuntimeException {
         try {
             byte[] bytes = new byte[1024];
             int r = ins.read(bytes);

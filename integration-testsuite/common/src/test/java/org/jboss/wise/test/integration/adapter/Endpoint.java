@@ -39,7 +39,7 @@ public interface Endpoint {
     @XmlJavaTypeAdapter(value = HexBinaryAdapter.class)
     @WebMethod
     public byte[] getData(
-        @WebParam(partName = "dataQuery", mode = WebParam.Mode.INOUT, name = "dataQuery")
-        javax.xml.ws.Holder<DataQuery> dataQuery
+            @WebParam(partName = "dataQuery", mode = WebParam.Mode.INOUT, name = "dataQuery")
+                    javax.xml.ws.Holder<DataQuery> dataQuery
     );
 }

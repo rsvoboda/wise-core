@@ -21,19 +21,14 @@
  */
 package org.jboss.wise.samples;
 
-import java.net.ConnectException;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.jboss.wise.core.client.InvocationResult;
 import org.jboss.wise.core.client.WSDynamicClient;
 import org.jboss.wise.core.client.WSMethod;
 import org.jboss.wise.core.client.builder.WSDynamicClientBuilder;
 import org.jboss.wise.core.client.factories.WSDynamicClientFactory;
-import org.jboss.wise.core.exception.InvocationException;
-import org.jboss.wise.core.exception.MappingException;
-import org.jboss.wise.core.exception.WiseRuntimeException;
 import org.jboss.wise.core.handlers.LoggingHandler;
+
+import java.util.HashMap;
 
 /**
  * @author stefano.maestri@javalinux.it
@@ -44,22 +39,22 @@ public class HelloWorldClient {
      * @param args
      */
     public static void main(String[] args) {
-	try {
-	    WSDynamicClientBuilder clientBuilder = WSDynamicClientFactory.getJAXWSClientBuilder();
-	    WSDynamicClient client = clientBuilder.tmpDir("target/temp/wise").verbose(true).keepSource(true)
-		    .wsdlURL("http://127.0.0.1:8080/HelloWorld/HelloWorldWS?wsdl").build();
-	    WSMethod method = client.getWSMethod("HelloWorldWSService", "HelloWorldPort", "sayHello");
-	    method.getEndpoint().addHandler(new LoggingHandler());
-	    HashMap<String, Object> requestMap = new HashMap<String, Object>();
-	    requestMap.put("toWhom", "SpiderMan");
-	    InvocationResult result = method.invoke(requestMap, null);
-	    System.out.println(result.getMapRequestAndResult(null, null));
-	    System.out.println(result.getMapRequestAndResult(null, requestMap));
-	    client.close();
+        try {
+            WSDynamicClientBuilder clientBuilder = WSDynamicClientFactory.getJAXWSClientBuilder();
+            WSDynamicClient client = clientBuilder.tmpDir("target/temp/wise").verbose(true).keepSource(true)
+                    .wsdlURL("http://127.0.0.1:8080/HelloWorld/HelloWorldWS?wsdl").build();
+            WSMethod method = client.getWSMethod("HelloWorldWSService", "HelloWorldPort", "sayHello");
+            method.getEndpoint().addHandler(new LoggingHandler());
+            HashMap<String, Object> requestMap = new HashMap<String, Object>();
+            requestMap.put("toWhom", "SpiderMan");
+            InvocationResult result = method.invoke(requestMap, null);
+            System.out.println(result.getMapRequestAndResult(null, null));
+            System.out.println(result.getMapRequestAndResult(null, requestMap));
+            client.close();
 
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

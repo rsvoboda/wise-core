@@ -21,11 +21,6 @@
  */
 package org.jboss.wise.test.integration.wsaddressing;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.PrintStream;
-import java.net.URL;
-import java.util.Map;
 import junit.framework.Assert;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -44,6 +39,12 @@ import org.jboss.wise.core.wsextensions.impl.WSAddressingEnabler;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.PrintStream;
+import java.net.URL;
+import java.util.Map;
+
 /**
  * Tests WS-Addressing extension in Wise
  *
@@ -59,11 +60,11 @@ public class WSAddressingIntegrationTest extends WiseTest {
     public static WebArchive createDeployment() {
         WebArchive archive = ShrinkWrap.create(WebArchive.class, WAR + ".war");
         archive
-           .addClass(org.jboss.wise.test.integration.wsaddressing.HelloImpl.class)
-           .addClass(org.jboss.wise.test.integration.wsaddressing.Hello.class)
-           .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsa/Hello.wsdl"))
-           .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsa/test.wsdl"))
-           .setWebXML(new File(getTestResourcesDir() + "/WEB-INF/wsa/web.xml"));
+                .addClass(org.jboss.wise.test.integration.wsaddressing.HelloImpl.class)
+                .addClass(org.jboss.wise.test.integration.wsaddressing.Hello.class)
+                .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsa/Hello.wsdl"))
+                .addAsWebInfResource(new File(getTestResourcesDir() + "/WEB-INF/wsa/test.wsdl"))
+                .setWebXML(new File(getTestResourcesDir() + "/WEB-INF/wsa/web.xml"));
         return archive;
     }
 
@@ -76,7 +77,7 @@ public class WSAddressingIntegrationTest extends WiseTest {
 
         WSDynamicClientBuilder clientBuilder = WSDynamicClientFactory.getJAXWSClientBuilder();
         WSDynamicClient client = clientBuilder.tmpDir("target/temp/wise").verbose(true).keepSource(true).wsdlURL(wsdlURL
-            .toString()).build();
+                .toString()).build();
         WSMethod method = client.getWSMethod("HelloService", "HelloImplPort", "echoUserType");
         WSEndpoint wsEndpoint = method.getEndpoint();
 

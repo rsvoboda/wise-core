@@ -21,16 +21,18 @@
  */
 package org.jboss.wise.core.client.impl.reflection;
 
+import org.jboss.wise.core.mapper.WiseMapper;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import java.util.HashMap;
-import java.util.Map;
-import org.jboss.wise.core.mapper.WiseMapper;
-import org.junit.Test;
 
 /**
  * @author stefano.maestri@javalinux.it
@@ -43,21 +45,21 @@ public class InvocationResultImplTest {
     public void shoudReturnAnOriginaObjectsEmptyMapIfNameIsNull() throws Exception {
         results = new InvocationResultImpl(null, Long.class, new Long(1), null);
         Map<String, Object> mappedResult = results.getMapRequestAndResult(null, null);
-        assertThat(((Map<?,?>)mappedResult.get("results")).isEmpty(), is(true));
+        assertThat(((Map<?, ?>) mappedResult.get("results")).isEmpty(), is(true));
     }
 
     @Test
     public void shoudReturnAnOriginaObjectsEmptyMapIfNameIsEmptyString() throws Exception {
         results = new InvocationResultImpl(" ", Long.class, new Long(1), null);
         Map<String, Object> mappedResult = results.getMapRequestAndResult(null, null);
-        assertThat(((Map<?,?>)mappedResult.get("results")).isEmpty(), is(true));
+        assertThat(((Map<?, ?>) mappedResult.get("results")).isEmpty(), is(true));
     }
 
     @Test
     public void shouldReturnOriginalObjectIfMapperIsNull() throws Exception {
         results = new InvocationResultImpl("result", Long.class, new Long(1), null);
         Map<String, Object> mappedResult = results.getMapRequestAndResult(null, null);
-        assertThat((Long)((Map<?,?>)mappedResult.get("results")).get("result"), equalTo(new Long(1)));
+        assertThat((Long) ((Map<?, ?>) mappedResult.get("results")).get("result"), equalTo(new Long(1)));
 
     }
 
@@ -69,7 +71,7 @@ public class InvocationResultImplTest {
         map.put("result", new Long(2));
         when(mapper.applyMapping(anyObject())).thenReturn(map);
         Map<String, Object> mappedResult = results.getMapRequestAndResult(mapper, null);
-        assertThat((Long)((Map<?,?>)mappedResult).get("result"), equalTo(new Long(2)));
+        assertThat((Long) ((Map<?, ?>) mappedResult).get("result"), equalTo(new Long(2)));
 
     }
 
@@ -79,8 +81,8 @@ public class InvocationResultImplTest {
         Map<String, Object> inputMap = new HashMap<String, Object>();
         inputMap.put("origKey", "origValue");
         Map<String, Object> mappedResult = results.getMapRequestAndResult(null, inputMap);
-        assertThat((Long)((Map<?,?>)mappedResult.get("results")).get("result"), equalTo(new Long(1)));
-        assertThat((String)mappedResult.get("origKey"), equalTo("origValue"));
+        assertThat((Long) ((Map<?, ?>) mappedResult.get("results")).get("result"), equalTo(new Long(1)));
+        assertThat((String) mappedResult.get("origKey"), equalTo("origValue"));
 
     }
 
@@ -94,8 +96,8 @@ public class InvocationResultImplTest {
         Map<String, Object> inputMap = new HashMap<String, Object>();
         inputMap.put("origKey", "origValue");
         Map<String, Object> mappedResult = results.getMapRequestAndResult(null, inputMap);
-        assertThat((Long)((Map<?,?>)mappedResult.get("results")).get("result"), equalTo(new Long(1)));
-        assertThat((String)mappedResult.get("origKey"), equalTo("origValue"));
+        assertThat((Long) ((Map<?, ?>) mappedResult.get("results")).get("result"), equalTo(new Long(1)));
+        assertThat((String) mappedResult.get("origKey"), equalTo("origValue"));
 
     }
 

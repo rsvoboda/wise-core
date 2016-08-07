@@ -34,12 +34,10 @@ import javax.xml.ws.WebServiceProvider;
  * @author alessio.soldano@jboss.com
  * @since 13-May-2009
  */
-@WebServiceProvider(portName="AddNumbersPort", serviceName="AddNumbersService", targetNamespace="http://duke.example.org", wsdlLocation = "WEB-INF/wsdl/SchemaImport/WsdlWithSchemaImport.wsdl")
+@WebServiceProvider(portName = "AddNumbersPort", serviceName = "AddNumbersService", targetNamespace = "http://duke.example.org", wsdlLocation = "WEB-INF/wsdl/SchemaImport/WsdlWithSchemaImport.wsdl")
 @ServiceMode(value = Service.Mode.MESSAGE)
-public class ProtectedSchemaImportProvider implements Provider<SOAPMessage>
-{
-   public SOAPMessage invoke(SOAPMessage request)
-   {
-      return request;
-   }
+public class ProtectedSchemaImportProvider implements Provider<SOAPMessage> {
+    public SOAPMessage invoke(SOAPMessage request) {
+        return request;
+    }
 }

@@ -21,15 +21,6 @@
  */
 package org.jboss.wise.test.integration.adapter;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.lang.reflect.ParameterizedType;
-import java.net.URL;
-import java.util.Map;
-
-import javax.jws.WebParam;
-import javax.xml.ws.Holder;
-
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -46,6 +37,14 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import javax.jws.WebParam;
+import javax.xml.ws.Holder;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.lang.reflect.ParameterizedType;
+import java.net.URL;
+import java.util.Map;
 
 /**
  * @author alessio.soldano@jboss.com
